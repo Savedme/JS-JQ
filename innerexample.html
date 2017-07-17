@@ -1,0 +1,43 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>InnerHtml Test</title>
+    <script type="text/javascript" src="/js/jquery-1.8.0.js"></script>
+    
+    <script type="text/javascript">
+        var strHTML = "";
+        var count = 0;
+        var json = {"data" :  [
+            {"name" : "a", "value" : "1"},
+            {"name" : "b", "value" : "2"},
+            {"name" : "c", "value" : "3"}
+]
+        };
+        function innerHTML_add(){
+            strHTML += "<table border='1' cellpadding='0'>";
+            strHTML += "<caption>● 테스트" + count + "</caption>";
+            strHTML += "<tr><td colspan='2'></td></tr>";
+            strHTML += "<tr bgcolor='#E2E2E2' align='center'>";
+            strHTML += "<td style='width:10%' >번호</td>";
+            strHTML += "<td style='width:40%'>이름</td>";
+            strHTML += "</tr>";
+            for(var j=0;j< json.data.length; j++){
+                strHTML += "<tr align='center'>";
+                strHTML += "<td>" + json.data[j].value + "</td>";
+                strHTML += "<td>" + json.data[j].name +"</td>";
+                strHTML += "</tr>";
+            }
+            strHTML += " </table>";
+            document.getElementById("divTest").innerHTML = strHTML;
+            count++;
+        }
+    </script>
+
+</head>
+<body>
+        <div id="divTest"></div>
+        <input type="button" value="화면그리드" name="btn_layout" id="btn_layout" onclick="innerHTML_add()">
+  </body>
+</html>
+
